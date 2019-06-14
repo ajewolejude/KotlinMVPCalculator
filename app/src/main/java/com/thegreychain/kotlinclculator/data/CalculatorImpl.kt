@@ -1,11 +1,13 @@
 package com.thegreychain.kotlinclculator.data
 
 import android.support.annotation.VisibleForTesting
+import android.util.Log
 import com.thegreychain.kotlinclculator.data.datamodel.ExpressionDataModel
 import com.thegreychain.kotlinclculator.data.datamodel.OperandDataModel
 import com.thegreychain.kotlinclculator.data.datamodel.OperatorDataModel
 import com.thegreychain.kotlinclculator.domain.repository.ICalculator
 import io.reactivex.Flowable
+import net.objecthunter.exp4j.ExpressionBuilder
 import java.lang.IllegalArgumentException
 import java.util.*
 
@@ -14,10 +16,24 @@ object CalculatorImpl : ICalculator {
     override fun evaluateExpression(expression: String): Flowable<ExpressionDataModel> {
 
         if (expression.contains('(')){
-            return evaluatepar(expression)
+            try {
+
+                val expressions = ExpressionBuilder(expression).build()
+                val result = expressions.evaluate()
+                val longResult = result.toLong()
+                if(result == longResult.toDouble())
+                    return Flowable.just(ExpressionDataModel(longResult.toString(), true))
+                else
+                    return Flowable.just(ExpressionDataModel(result.toString().toString(), true))
+
+            }catch (e:Exception){
+                Log.d("Exception"," message : " + e.message )
+            }
         }else{
             return evaluate(expression)
         }
+
+        return Flowable.just(ExpressionDataModel("0", true))
 
     }
 
