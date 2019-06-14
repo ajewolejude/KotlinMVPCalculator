@@ -89,6 +89,10 @@ class CalculatorFragment : Fragment(), IViewContract.View, View.OnClickListener,
         btn_operator_subtract.setOnClickListener(this)
         btn_operator_multiply.setOnClickListener(this)
         btn_operator_divide.setOnClickListener(this)
+        btn_close_b.setOnClickListener(this)
+        btn_open_b.setOnClickListener(this)
+        btn_sqr.setOnClickListener(this)
+        btn_sqrt.setOnClickListener(this)
     }
 
     /*---------------- Interface ----------------*/

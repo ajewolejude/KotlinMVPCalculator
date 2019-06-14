@@ -12,7 +12,7 @@
         android:id="@+id/btn_display_delete"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginBottom="0dp"
         android:text="x"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/lbl_display"
         android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp" />
+        android:layout_marginRight="0dp" />
 
 
     <TextView
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/gdl_display"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.16" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <Button
         style="@style/ButtonNumberPad"
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/gdl_top"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37" />
+        app:layout_constraintGuide_percent="0.30" />
 
     <Button
         style="@style/ButtonNumberPad"
@@ -154,7 +154,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/gdl_middle"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.58" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <Button
         style="@style/ButtonNumberPad"
@@ -212,7 +212,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/gdl_bottom"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.79" />
+        app:layout_constraintGuide_percent="0.60" />
 
     <Button
         style="@style/ButtonNumberPad"
@@ -224,7 +224,9 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_decimal"
+
         app:layout_constraintTop_toTopOf="@+id/gdl_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_last"
         android:layout_marginTop="0dp" />
 
     <Button
@@ -238,7 +240,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toStartOf="@+id/btn_evaluate"
+
         app:layout_constraintTop_toTopOf="@+id/gdl_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_last"
         android:layout_marginTop="0dp" />
 
     <Button
@@ -251,7 +255,9 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_operator_add"
+
         app:layout_constraintTop_toTopOf="@+id/gdl_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_last"
         android:layout_marginTop="0dp" />
 
     <Button
@@ -265,7 +271,77 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/gdl_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/gdl_last"
+
         android:layout_marginTop="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_last"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <Button
+        style="@style/ButtonNumberPad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="sqr"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/btn_sqr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_sqrt"
+        app:layout_constraintTop_toTopOf="@+id/gdl_last"
+        android:layout_marginTop="0dp" />
+
+    <Button
+        style="@style/ButtonNumberPad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="sqrt"
+        android:id="@+id/btn_sqrt"
+        app:layout_constraintStart_toEndOf="@+id/btn_sqr"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toStartOf="@+id/btn_open_b"
+        app:layout_constraintTop_toTopOf="@+id/gdl_last"
+        android:layout_marginTop="0dp" />
+
+    <Button
+        style="@style/ButtonNumberPad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/btn_open_b"
+        android:text="("
+        app:layout_constraintStart_toEndOf="@+id/btn_sqrt"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_close_b"
+        app:layout_constraintTop_toTopOf="@+id/gdl_last"
+        android:layout_marginTop="0dp" />
+
+    <Button
+        style="@style/ButtonOperation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text=")"
+        android:id="@+id/btn_close_b"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_open_b"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gdl_last"
+        android:layout_marginTop="0dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gdl_lst"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>
