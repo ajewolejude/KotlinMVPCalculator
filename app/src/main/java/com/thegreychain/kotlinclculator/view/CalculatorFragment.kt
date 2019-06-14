@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_calculator.*
 class CalculatorFragment : Fragment(), IViewContract.View, View.OnClickListener, View.OnLongClickListener {
     override fun onLongClick(v: View?): Boolean {
         when (v?.id) {
+
             R.id.btn_display_delete -> presenter.onLongDeleteClick()
         }
 
@@ -27,6 +28,7 @@ class CalculatorFragment : Fragment(), IViewContract.View, View.OnClickListener,
         when (v?.id) {
             R.id.btn_evaluate -> presenter.onEvaluateClick(lbl_display.text.toString())
             R.id.btn_display_delete -> presenter.onDeleteClick()
+            R.id.btn_clear -> presenter.onLongDeleteClick()
             else -> {
                 if (v is Button) {
                     presenter.onInputButtonClick(v.text.toString())
@@ -75,6 +77,7 @@ class CalculatorFragment : Fragment(), IViewContract.View, View.OnClickListener,
         btn_decimal.setOnClickListener(this)
         btn_display_delete.setOnClickListener(this)
         btn_display_delete.setOnLongClickListener(this)
+        btn_clear.setOnClickListener(this)
 
         btn_number_one.setOnClickListener(this)
         btn_number_two.setOnClickListener(this)
