@@ -1,10 +1,10 @@
 ## MVP Kotlin Calculator
 
-The primary goal of this project was to create an android calculator app using kotlin. It was implemented using a MVP + ViewModel architecture
-which includes a ViewModel object (not to be confused with MVVM). 
+This project is an android calculator app using kotlin programming language. It was implemented using a MVP + ViewModel architecture
+which includes a ViewModel object. 
 
 ## APP Link
-
+https://drive.google.com/open?id=1OzRjznhntyo9I-zTWOp2l2Zv4cV9PkHr
 
 ## Implementation:
 - Unit tests using JUnit
@@ -26,7 +26,8 @@ which includes a ViewModel object (not to be confused with MVVM).
 - Application: LeakCanary.
 - Injector: A simple home baked Dependency Injection class.
 
-##Inspiration
+### Inspiration
+
 Awesome collection of projects made by pro devs and googlers:
 https://github.com/googlesamples/android-architecture
 
