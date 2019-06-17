@@ -1,6 +1,6 @@
 ## MVP Kotlin Calculator
 
-The primary goal of this project was to create an android calculator app using kotlin. It was implemented using a MVP + ViewModel architecture
+This project is an android calculator app using kotlin programming language. It was implemented using a MVP + ViewModel architecture
 which includes a ViewModel object. 
 
 ## APP Link
