@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.thegreychain.kotlinclculator">
+    package="com.thegreychain.kotlincalculator">
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,7 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".CalculatorActivity">
+        <activity android:name="com.thegreychain.kotlincalculator.CalculatorActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
