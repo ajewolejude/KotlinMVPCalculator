@@ -108,7 +108,7 @@ class CalculatorFragment : Fragment(), IViewContract.View, View.OnClickListener,
         lbl_display.text = value
     }
 
-    override fun showError(value: String) {
+    public override fun showError(value: String) {
         Toast.makeText(activity, value, Toast.LENGTH_SHORT).show()
     }
 

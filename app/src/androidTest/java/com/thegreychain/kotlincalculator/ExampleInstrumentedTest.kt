@@ -18,6 +18,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.thegreychain.kotlinclculator", appContext.packageName)
+        assertEquals("com.thegreychain.kotlincalculator", appContext.packageName)
     }
 }

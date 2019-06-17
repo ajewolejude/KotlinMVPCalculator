@@ -145,26 +145,6 @@ public class CalculatorActivityTestAllWidgetClickAndCompare {
                         isDisplayed()));
         textView.check(matches(withText("0123456789")));
 
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.lbl_display), withText("0123456789"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                1),
-                        isDisplayed()));
-        textView2.check(matches(withText("0123456789")));
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.lbl_display), withText("0123456789"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                1),
-                        isDisplayed()));
-        textView3.check(matches(withText("0123456789")));
-
         ViewInteraction appCompatButton11 = onView(
                 allOf(withId(R.id.btn_clear), withText("C"),
                         childAtPosition(
@@ -266,7 +246,7 @@ public class CalculatorActivityTestAllWidgetClickAndCompare {
         textView4.check(matches(withText("√()+-*/.")));
 
         ViewInteraction appCompatButton20 = onView(
-                allOf(withId(R.id.btn_display_delete), withText("x"),
+                allOf(withId(R.id.btn_display_delete), withText("⌫"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.root_activity_calculator),

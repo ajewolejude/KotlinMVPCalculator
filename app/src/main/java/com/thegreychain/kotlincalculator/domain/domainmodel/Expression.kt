@@ -12,6 +12,5 @@ class Expression private constructor(var result: String,
             return Expression(result,
                     false)
         }
-        //could even do createLoadingModel if appropriate. This App is simple enough that it doesn't need long running operations
     }
 }

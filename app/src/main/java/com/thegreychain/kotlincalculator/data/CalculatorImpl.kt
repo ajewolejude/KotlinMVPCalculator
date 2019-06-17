@@ -13,6 +13,8 @@ import java.util.*
 import android.graphics.Color.parseColor
 import android.widget.Toast
 import com.thegreychain.kotlincalculator.util.error.ValidationException
+import com.thegreychain.kotlincalculator.view.CalculatorFragment
+import com.thegreychain.kotlincalculator.view.IViewContract
 import net.objecthunter.exp4j.Expression
 
 
@@ -26,8 +28,7 @@ object CalculatorImpl : ICalculator {
     }
 
     private fun evaluate(expression: String): Flowable<ExpressionDataModel> {
-
-        //get ops and ops
+        //if expression contains ( or √, use Expression Builder, else get operands and operators
 
         val operands: MutableList<OperandDataModel> = getOperands(expression)
 
@@ -48,7 +49,7 @@ object CalculatorImpl : ICalculator {
                 Log.d("Exception"," message : " + e.message )
 
 
-                return Flowable.just(ExpressionDataModel(e.message.toString(), false))
+                //return Flowable.just(ExpressionDataModel(e.message.toString(), false))
             }
 
 
