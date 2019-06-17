@@ -3,11 +3,14 @@
 The primary goal of this project was to create an android calculator app using kotlin. It was implemented using a MVP + ViewModel architecture
 which includes a ViewModel object (not to be confused with MVVM). 
 
-## Implementation
-• Unit tests using JUnit
-• Regex
-• Mvp + viewmodel
-• Espresso for UI Tests.
+## APP Link
+
+
+## Implementation:
+- Unit tests using JUnit
+- Regex
+- Mvp + viewmodel
+- Espresso for UI Tests. https://drive.google.com/open?id=1CbjvejRaDs-ksoPrQYTQDipLI64oE7cN
 
 
 
