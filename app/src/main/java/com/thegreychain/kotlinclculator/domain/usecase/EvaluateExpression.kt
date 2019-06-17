@@ -6,8 +6,13 @@ import io.reactivex.Flowable
 import com.thegreychain.kotlinclculator.domain.repository.ICalculator
 import com.thegreychain.kotlinclculator.domain.repository.IValidator
 import com.thegreychain.kotlinclculator.util.error.ValidationException
+import io.reactivex.schedulers.TestScheduler
 import com.thegreychain.kotlinclculator.util.scheduler.BaseSchedulerProvider
 
+
+/**
+ * Created by R_KAY on 12/20/2017.
+ */
 class EvaluateExpression(private val calculator: ICalculator,
                          private val validator: IValidator,
                          private val scheduler: BaseSchedulerProvider) : BaseUseCase<Expression> {
@@ -30,6 +35,5 @@ class EvaluateExpression(private val calculator: ICalculator,
         return Flowable.just(
                 Expression.createFailureModel(ValidationException.message)
         )
-
     }
 }

@@ -12,6 +12,7 @@ object ValidatorImpl : IValidator {
         //Check for concurrent decimals and operators like "2++2"
         if (hasConcurrentOperators(expression)) return false
         if (hasConcurrentDecimals(expression)) return false
+        if (hasCloseBracketFollowingRoot(expression)) return false
 
         return true
     }
@@ -23,6 +24,7 @@ object ValidatorImpl : IValidator {
             expression.endsWith("*") -> return true
             expression.endsWith("/") -> return true
             expression.endsWith(".") -> return true
+            expression.endsWith("√") -> return true
             else -> return false
         }
     }
@@ -34,6 +36,7 @@ object ValidatorImpl : IValidator {
             expression.startsWith("*") -> return true
             expression.startsWith("/") -> return true
             expression.startsWith(".") -> return true
+            expression.startsWith(")") -> return true
             else -> return false
         }
     }
@@ -86,6 +89,24 @@ object ValidatorImpl : IValidator {
             char.toString() == "*" -> true
             char.toString() == "/" -> true
             else -> false
+        }
+    }
+
+    private fun hasCloseBracketFollowingRoot(expression: String):Boolean {
+        when {
+            expression.contains("√)") -> return true
+            else -> return false
+        }
+    }
+
+    private fun hasOnlyBracketAndOrRoot(expression: String):Boolean {
+        when {
+            expression.contains("+") -> return false
+            expression.startsWith("-") -> return false
+            expression.startsWith("*") -> return false
+            expression.startsWith("/") -> return false
+            expression.startsWith(".") -> return false
+            else -> return false
         }
     }
 }

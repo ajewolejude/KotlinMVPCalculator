@@ -10,68 +10,82 @@ import io.reactivex.Flowable
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.lang.IllegalArgumentException
 import java.util.*
+import android.graphics.Color.parseColor
+import android.widget.Toast
+import com.thegreychain.kotlinclculator.util.error.ValidationException
+import net.objecthunter.exp4j.Expression
 
 
 object CalculatorImpl : ICalculator {
     override fun evaluateExpression(expression: String): Flowable<ExpressionDataModel> {
 
-        if (expression.contains('(')){
-            try {
 
-                val expressions = ExpressionBuilder(expression).build()
-                val result = expressions.evaluate()
-                val longResult = result.toLong()
-                if(result == longResult.toDouble())
-                    return Flowable.just(ExpressionDataModel(longResult.toString(), true))
-                else
-                    return Flowable.just(ExpressionDataModel(result.toString().toString(), true))
-
-            }catch (e:Exception){
-                Log.d("Exception"," message : " + e.message )
-            }
-        }else{
             return evaluate(expression)
-        }
 
-        return Flowable.just(ExpressionDataModel("0", true))
 
     }
 
     private fun evaluate(expression: String): Flowable<ExpressionDataModel> {
 
         //get ops and ops
-        val operatorDataModels: MutableList<OperatorDataModel> = getOperators(expression)
+
         val operands: MutableList<OperandDataModel> = getOperands(expression)
 
-        while (operands.size > 1) {
-            val firstOperand = operands[0]
-            val secondOperand = operands[1]
-            val firstOperator = operatorDataModels[0]
+        if (expression.contains('(' )|| expression.contains("√")){
+            //return evaluatepar(expression)
+            try {
 
-            //if op is * or / (evaluateFirst), or no more operatorDataModels to follow,
-            // or next op is NOT (evaluateFirst)
-            if (firstOperator.evaluateFirst ||
-                    operatorDataModels.elementAtOrNull(1) == null ||
-                    !operatorDataModels[1].evaluateFirst) {
-                val result = OperandDataModel(evaluatePair(firstOperand, secondOperand, firstOperator))
-                operatorDataModels.remove(firstOperator)
-                operands.remove(firstOperand)
-                operands.remove(secondOperand)
+                val expressions = ExpressionBuilder(expression.replace("√","sqrt")).build()
+                val result = expressions.evaluate()
+                val longResult = result.toLong()
+                if(result == longResult.toDouble())
+                    operands.add(0, OperandDataModel(result.toString()))
+                else
+                    operands.add(0, OperandDataModel(result.toString()))
 
-                operands.add(0, result)
-            } else {
+            }catch (e:Exception){
 
-                val thirdOperand = operands[2]
-                val secondOperator = operatorDataModels[1]
-                val result = OperandDataModel(evaluatePair(secondOperand, thirdOperand, secondOperator))
+                Log.d("Exception"," message : " + e.message )
 
-                operatorDataModels.remove(secondOperator)
-                operands.remove(secondOperand)
-                operands.remove(thirdOperand)
 
-                operands.add(1, result)
+                return Flowable.just(ExpressionDataModel(e.message.toString(), false))
+            }
+
+
+        }else{
+            val operatorDataModels: MutableList<OperatorDataModel> = getOperators(expression)
+            while (operands.size > 1) {
+                val firstOperand = operands[0]
+                val secondOperand = operands[1]
+                val firstOperator = operatorDataModels[0]
+
+                //if op is * or / (evaluateFirst), or no more operatorDataModels to follow,
+                // or next op is NOT (evaluateFirst)
+                if (firstOperator.evaluateFirst ||
+                        operatorDataModels.elementAtOrNull(1) == null ||
+                        !operatorDataModels[1].evaluateFirst) {
+                    val result = OperandDataModel(evaluatePair(firstOperand, secondOperand, firstOperator))
+                    operatorDataModels.remove(firstOperator)
+                    operands.remove(firstOperand)
+                    operands.remove(secondOperand)
+
+                    operands.add(0, result)
+                } else {
+
+                    val thirdOperand = operands[2]
+                    val secondOperator = operatorDataModels[1]
+                    val result = OperandDataModel(evaluatePair(secondOperand, thirdOperand, secondOperator))
+
+                    operatorDataModels.remove(secondOperator)
+                    operands.remove(secondOperand)
+                    operands.remove(thirdOperand)
+
+                    operands.add(1, result)
+                }
             }
         }
+
+
 
         //when calculations are finished, emit the result
         return Flowable.just(ExpressionDataModel(operands[0].value, true))
@@ -196,6 +210,95 @@ object CalculatorImpl : ICalculator {
             }
         }
         return 0
+    }
+
+    fun evaluateparr(expression: String): Flowable<ExpressionDataModel> {
+        var parCount=0
+        var currentOperator="+"
+        var operators="+-*/"
+        var operand1=0.0
+        var operand2="0"
+
+        var index=0;
+        val tokens = expression.toCharArray()
+
+        while (index < tokens.size) {
+            // Current token is a whitespace, skip it
+            Log.i("tokensIndex", index.toString()+" "+tokens[index])
+            if (tokens[index] == ' ') {
+                index++
+                continue
+            }
+            if (tokens[index] == ')') {
+                if (parCount<1) {
+                    index++
+                    continue
+                }
+            }else if (tokens[index] == '(') {
+                parCount++
+                index++
+                continue
+            }
+
+            if(parCount>0){
+                var op1=0.0
+                var op2="0"
+                var operator="+"
+                while(parCount>0){
+
+                    if (tokens[index] == ')') {
+                        op1=calculate(op1, op2, operator)
+                        operand1=calculate(operand1, op1.toString(), currentOperator)
+                        parCount--
+                        Log.i("INDEX__", "op2.toString() "+operand2)
+
+
+                        op1=0.0
+                        op2="0"
+                        operator="+"
+//                        index++
+//                        continue
+                    }else{
+                        if(operators.contains(tokens[index])){
+                            op1=calculate(op1, op2, operator)
+                            operator=tokens[index].toString()
+                            Log.i("INDEX__", op1.toString()+" "+op2+" "+operator)
+                            op2="0"
+                        }else{
+                            op2+=tokens[index]
+                            Log.i("INDEX__", "OP2 "+op2)
+                        }
+//                        index++
+                    }
+                    index++
+                }
+            }else{
+                if(operators.contains(tokens[index])){
+                    operand1= calculate(operand1, operand2, currentOperator)
+                    currentOperator=tokens[index].toString()
+                    operand2="0"
+                }else{
+                    operand2+=tokens[index]
+                }
+                index++
+            }
+        }
+        operand1=calculate(operand1, operand2, currentOperator)
+        return Flowable.just(ExpressionDataModel(operand1.toString(),true))
+    }
+
+    fun calculate(operand1: Double, operand2: String, operator: String): Double {
+        when (operator) {
+            "+" -> return operand1 + operand2.toFloat()
+            "-" -> return operand1 - operand2.toFloat()
+            "*" -> return operand1 * operand2.toFloat()
+            "/" -> {
+                if (operand2.toInt() == 0)
+                    throw UnsupportedOperationException("Cannot divide by zero")
+                return operand1 / operand2.toFloat()
+            }
+        }
+        return 0.0
     }
 
 }

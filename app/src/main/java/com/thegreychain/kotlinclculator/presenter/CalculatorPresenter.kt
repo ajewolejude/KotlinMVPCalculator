@@ -1,16 +1,21 @@
 package com.thegreychain.kotlinclculator.presenter
 
+import com.thegreychain.kotlinclculator.domain.BaseUseCase
 import com.thegreychain.kotlinclculator.domain.usecase.EvaluateExpression
-import com.thegreychain.kotlinclculator.util.scheduler.BaseSchedulerProvider
 import com.thegreychain.kotlinclculator.domain.domainmodel.Expression
+import com.thegreychain.kotlinclculator.util.scheduler.BaseSchedulerProvider
 import com.thegreychain.kotlinclculator.view.IViewContract
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.TestScheduler
 import io.reactivex.subscribers.DisposableSubscriber
 
-class CalculatorPresenter(private var view: IViewContract.View,
-                          private var viewModel: IViewContract.ViewModel,
-                          private val scheduler: BaseSchedulerProvider,
-                          private val eval: EvaluateExpression) : IViewContract.Presenter {
+
+/**
+ * Created by R_KAY on 12/20/2017.
+ */class CalculatorPresenter(private var view: IViewContract.View,
+                             private var viewModel: IViewContract.ViewModel,
+                             private val scheduler: BaseSchedulerProvider,
+                             private val eval: EvaluateExpression) : IViewContract.Presenter {
 
     private val eventStream = CompositeDisposable()
 
