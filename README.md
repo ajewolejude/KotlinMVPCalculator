@@ -4,7 +4,7 @@ The primary goal of this project was to create an android calculator app using k
 which includes a ViewModel object (not to be confused with MVVM). 
 
 ## Implementation
-• Unit tests
+• Unit tests using JUnit
 • Regex
 • Mvp + viewmodel
 • Espresso for UI Tests.
