@@ -8,7 +8,7 @@ import org.junit.Test
 class CalculatorViewModelTest {
 
 
-    val STATE = "LOLOLOLOLOLOLOLOLOLOL"
+    val STATE = "1234"
 
     @Test
     fun onSetDisplayState() {

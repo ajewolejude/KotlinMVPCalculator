@@ -14,6 +14,7 @@ class ValidatorImplTest {
 
 
     val COMPLEX_EXPRESSION = "2+2-1*3+4"
+    val COMPLEX_EXPRESSION_ONE = "(2+2)-1*(3+4)"
     val SIMPLE_EXPRESSION = "2+2"
     val INVALID_EXPRESSION_ONE = "2+"
     val INVALID_EXPRESSION_TWO = "+2"
@@ -34,6 +35,13 @@ class ValidatorImplTest {
 
     @Test
     fun validExpressionTestTwo(){
+
+        assertTrue(validator.validateExpression(COMPLEX_EXPRESSION))
+
+    }
+
+    @Test
+    fun validExpressionTestThree(){
 
         assertTrue(validator.validateExpression(COMPLEX_EXPRESSION))
 

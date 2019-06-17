@@ -25,8 +25,11 @@ class EvaluateExpressionModelTest {
 
     lateinit var useCase: EvaluateExpression
 
-    val EXPRESSION = "2+√4"
-    val ANSWER = "4"
+    val EXPRESSION = "2+4"
+    val ANSWER = "6"
+
+    val EXPRESSION_ONE = "(2+2)-1*(3+4)"
+    val ANSWER_ONE = "-8"
 
     @Before
     fun setUp() {
@@ -57,6 +60,35 @@ class EvaluateExpressionModelTest {
 
         assertTrue(subscriber.values()[0].result == ANSWER)
         assertTrue(subscriber.values()[0].successful)
+
+
+    }
+
+    @Test
+    fun onUseCaseExecuted2() {
+        val subscriber = TestSubscriber<Expression>()
+
+        Mockito.`when`(validator.validateExpression(EXPRESSION_ONE))
+                .thenReturn(
+                        true
+                )
+
+        Mockito.`when`(calc.evaluateExpression(EXPRESSION_ONE))
+                .thenReturn(
+                        Flowable.just(
+                                ExpressionDataModel(ANSWER_ONE, true)
+                        )
+                )
+
+        useCase.execute(EXPRESSION_ONE).subscribeWith(subscriber)
+
+        Mockito.verify(validator).validateExpression(EXPRESSION_ONE)
+        Mockito.verify(calc).evaluateExpression(EXPRESSION_ONE)
+
+        assertTrue(subscriber.values()[0].result == ANSWER_ONE)
+        assertTrue(subscriber.values()[0].successful)
+
+
     }
 
 }

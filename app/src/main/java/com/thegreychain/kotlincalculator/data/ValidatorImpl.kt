@@ -13,6 +13,8 @@ object ValidatorImpl : IValidator {
         if (hasConcurrentOperators(expression)) return false
         if (hasConcurrentDecimals(expression)) return false
         if (hasCloseBracketFollowingRoot(expression)) return false
+        if (hasConcurrentRootOrBracket(expression)) return false
+
 
         return true
     }
@@ -90,6 +92,30 @@ object ValidatorImpl : IValidator {
             char.toString() == "/" -> true
             else -> false
         }
+    }
+
+    private fun isBracketAndRoot(char: Char): Boolean {
+        return when {
+        //not sure why I had to toString() but char.equals("+") was not working as expected
+            char.toString() == "√" -> true
+            char.toString() == "(" -> true
+            char.toString() == ")" -> true
+            else -> false
+        }
+    }
+
+
+    private fun hasConcurrentRootOrBracket(expression: String): Boolean {
+        expression.indices
+                .forEach {
+                    if (it < expression.lastIndex) {
+                        if (expression[it]==expression[it + 1]) {
+                            return true
+                        }
+                    }
+                }
+
+        return false
     }
 
     private fun hasCloseBracketFollowingRoot(expression: String):Boolean {

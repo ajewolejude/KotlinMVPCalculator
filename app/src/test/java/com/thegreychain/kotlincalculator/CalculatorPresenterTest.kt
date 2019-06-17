@@ -47,6 +47,9 @@ class CalculatorPresenterTest {
     val INVALID_EXPRESSION = "2+Q"
     val INVALID_ANSWER = "Error: Invalid ExpressionDataModel"
 
+    val VERY_COMPLEX_EXPRESSION = "√((2+2-1*3+4)*5)"
+    val VERY_COMPLEX_ANSWER = "5.0"
+
 
     @Before
     fun setUp() {
@@ -86,6 +89,33 @@ class CalculatorPresenterTest {
         Mockito.verify(eval).execute(EXPRESSION)
         Mockito.verify(viewModel).setDisplayState(ANSWER)
     }
+
+    @Test
+    fun onEvaluateValidComplexExpression() {
+        val result = Expression.createSuccessModel(VERY_COMPLEX_ANSWER)
+
+        Mockito.`when`(eval.execute(VERY_COMPLEX_EXPRESSION))
+                .thenReturn(
+                        Flowable.just(
+                                result
+                        )
+                )
+
+        Mockito.`when`(eval.execute(VERY_COMPLEX_EXPRESSION))
+                .thenReturn(
+                        Flowable.just(
+                                result
+                        )
+                )
+
+        //this is the "Unit" what we are testing
+        presenter.onEvaluateClick(VERY_COMPLEX_EXPRESSION)
+
+        //These are the assertions which must be satisfied in order to pass the test
+        Mockito.verify(eval).execute(VERY_COMPLEX_EXPRESSION)
+        Mockito.verify(viewModel).setDisplayState(VERY_COMPLEX_ANSWER)
+    }
+
 
     @Test
     fun onEvaluateInvalidExpression() {
