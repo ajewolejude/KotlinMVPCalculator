@@ -1,5 +1,7 @@
 package com.thegreychain.kotlinclculator;
 
+
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -24,151 +26,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
 
-
-
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class CalculatorActivityTest2 {
+public class CalculatorActivityTestAllWidgetClickAndCompare {
 
     @Rule
     public ActivityTestRule<CalculatorActivity> mActivityTestRule = new ActivityTestRule<>(CalculatorActivity.class);
 
     @Test
-    public void calculatorActivityTest2() {
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(700);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        /**?
-         * This UI Tests : ((5*5)+(2*10))
-         * 1. Onclick of (
-         * 2. Onclick of 5
-         * 3. Onclick of *
-         * 4. Onclick of +
-         * 5. Onclick of 2
-         * 6. Onclick of 10
-         * 7. Check if Result display is 45.0
-         * 8. Onclick of C- clear button
-         * 9. Check if Result display is blank
-         *
-         *
-         *
-         */
+    public void calculatorActivityTestAllWidgetClickAndCompare() {
         ViewInteraction appCompatButton = onView(
-                allOf(withId(R.id.btn_open_b), withText("("),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                25),
-                        isDisplayed()));
-        appCompatButton.perform(click());
-
-        ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.btn_open_b), withText("("),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                25),
-                        isDisplayed()));
-        appCompatButton2.perform(click());
-
-        ViewInteraction appCompatButton3 = onView(
-                allOf(withId(R.id.btn_number_five), withText("5"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                9),
-                        isDisplayed()));
-        appCompatButton3.perform(click());
-
-        ViewInteraction appCompatButton4 = onView(
-                allOf(withId(R.id.btn_operator_multiply), withText("*"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                11),
-                        isDisplayed()));
-        appCompatButton4.perform(click());
-
-        ViewInteraction appCompatButton5 = onView(
-                allOf(withId(R.id.btn_number_five), withText("5"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                9),
-                        isDisplayed()));
-        appCompatButton5.perform(click());
-
-        ViewInteraction appCompatButton6 = onView(
-                allOf(withId(R.id.btn_close_b), withText(")"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                26),
-                        isDisplayed()));
-        appCompatButton6.perform(click());
-
-        ViewInteraction appCompatButton7 = onView(
-                allOf(withId(R.id.btn_operator_add), withText("+"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                21),
-                        isDisplayed()));
-        appCompatButton7.perform(click());
-
-        ViewInteraction appCompatButton8 = onView(
-                allOf(withId(R.id.btn_open_b), withText("("),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                25),
-                        isDisplayed()));
-        appCompatButton8.perform(click());
-
-        ViewInteraction appCompatButton9 = onView(
-                allOf(withId(R.id.btn_number_two), withText("2"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                14),
-                        isDisplayed()));
-        appCompatButton9.perform(click());
-
-        ViewInteraction appCompatButton10 = onView(
-                allOf(withId(R.id.btn_operator_multiply), withText("*"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                11),
-                        isDisplayed()));
-        appCompatButton10.perform(click());
-
-        ViewInteraction appCompatButton11 = onView(
-                allOf(withId(R.id.btn_number_one), withText("1"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                13),
-                        isDisplayed()));
-        appCompatButton11.perform(click());
-
-        ViewInteraction appCompatButton12 = onView(
                 allOf(withId(R.id.btn_number_zero), withText("0"),
                         childAtPosition(
                                 childAtPosition(
@@ -176,15 +43,155 @@ public class CalculatorActivityTest2 {
                                         0),
                                 18),
                         isDisplayed()));
-        appCompatButton12.perform(click());
+        appCompatButton.perform(click());
 
-        ViewInteraction appCompatButton13 = onView(
-                allOf(withId(R.id.btn_close_b), withText(")"),
+        ViewInteraction appCompatButton2 = onView(
+                allOf(withId(R.id.btn_number_one), withText("1"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.root_activity_calculator),
                                         0),
-                                26),
+                                13),
+                        isDisplayed()));
+        appCompatButton2.perform(click());
+
+        ViewInteraction appCompatButton3 = onView(
+                allOf(withId(R.id.btn_number_two), withText("2"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                14),
+                        isDisplayed()));
+        appCompatButton3.perform(click());
+
+        ViewInteraction appCompatButton4 = onView(
+                allOf(withId(R.id.btn_number_three), withText("3"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                15),
+                        isDisplayed()));
+        appCompatButton4.perform(click());
+
+        ViewInteraction appCompatButton5 = onView(
+                allOf(withId(R.id.btn_number_four), withText("4"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                8),
+                        isDisplayed()));
+        appCompatButton5.perform(click());
+
+        ViewInteraction appCompatButton6 = onView(
+                allOf(withId(R.id.btn_number_five), withText("5"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                9),
+                        isDisplayed()));
+        appCompatButton6.perform(click());
+
+        ViewInteraction appCompatButton7 = onView(
+                allOf(withId(R.id.btn_number_six), withText("6"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                10),
+                        isDisplayed()));
+        appCompatButton7.perform(click());
+
+        ViewInteraction appCompatButton8 = onView(
+                allOf(withId(R.id.btn_number_seven), withText("7"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                3),
+                        isDisplayed()));
+        appCompatButton8.perform(click());
+
+        ViewInteraction appCompatButton9 = onView(
+                allOf(withId(R.id.btn_number_eight), withText("8"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                4),
+                        isDisplayed()));
+        appCompatButton9.perform(click());
+
+        ViewInteraction appCompatButton10 = onView(
+                allOf(withId(R.id.btn_number_nine), withText("9"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                5),
+                        isDisplayed()));
+        appCompatButton10.perform(click());
+
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.lbl_display), withText("0123456789"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                1),
+                        isDisplayed()));
+        textView.check(matches(withText("0123456789")));
+
+        ViewInteraction textView2 = onView(
+                allOf(withId(R.id.lbl_display), withText("0123456789"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                1),
+                        isDisplayed()));
+        textView2.check(matches(withText("0123456789")));
+
+        ViewInteraction textView3 = onView(
+                allOf(withId(R.id.lbl_display), withText("0123456789"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                1),
+                        isDisplayed()));
+        textView3.check(matches(withText("0123456789")));
+
+        ViewInteraction appCompatButton11 = onView(
+                allOf(withId(R.id.btn_clear), withText("C"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                23),
+                        isDisplayed()));
+        appCompatButton11.perform(click());
+
+        ViewInteraction appCompatButton12 = onView(
+                allOf(withId(R.id.btn_sqrt), withText("√"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                24),
+                        isDisplayed()));
+        appCompatButton12.perform(click());
+
+        ViewInteraction appCompatButton13 = onView(
+                allOf(withId(R.id.btn_open_b), withText("("),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                25),
                         isDisplayed()));
         appCompatButton13.perform(click());
 
@@ -199,6 +206,95 @@ public class CalculatorActivityTest2 {
         appCompatButton14.perform(click());
 
         ViewInteraction appCompatButton15 = onView(
+                allOf(withId(R.id.btn_operator_add), withText("+"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                21),
+                        isDisplayed()));
+        appCompatButton15.perform(click());
+
+        ViewInteraction appCompatButton16 = onView(
+                allOf(withId(R.id.btn_operator_subtract), withText("-"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                16),
+                        isDisplayed()));
+        appCompatButton16.perform(click());
+
+        ViewInteraction appCompatButton17 = onView(
+                allOf(withId(R.id.btn_operator_multiply), withText("*"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                11),
+                        isDisplayed()));
+        appCompatButton17.perform(click());
+
+        ViewInteraction appCompatButton18 = onView(
+                allOf(withId(R.id.btn_operator_divide), withText("/"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                6),
+                        isDisplayed()));
+        appCompatButton18.perform(click());
+
+        ViewInteraction appCompatButton19 = onView(
+                allOf(withId(R.id.btn_decimal), withText("."),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                19),
+                        isDisplayed()));
+        appCompatButton19.perform(click());
+
+        ViewInteraction textView4 = onView(
+                allOf(withId(R.id.lbl_display), withText("√()+-*/."),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                1),
+                        isDisplayed()));
+        textView4.check(matches(withText("√()+-*/.")));
+
+        ViewInteraction appCompatButton20 = onView(
+                allOf(withId(R.id.btn_display_delete), withText("x"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                0),
+                        isDisplayed()));
+        appCompatButton20.perform(click());
+
+        ViewInteraction textView5 = onView(
+                allOf(withId(R.id.lbl_display), withText("√()+-*/"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.root_activity_calculator),
+                                        0),
+                                1),
+                        isDisplayed()));
+        textView5.check(matches(withText("√()+-*/")));
+
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(700);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction appCompatButton21 = onView(
                 allOf(withId(R.id.btn_evaluate), withText("="),
                         childAtPosition(
                                 childAtPosition(
@@ -206,37 +302,17 @@ public class CalculatorActivityTest2 {
                                         0),
                                 20),
                         isDisplayed()));
-        appCompatButton15.perform(click());
+        appCompatButton21.perform(click());
 
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.lbl_display),
+        ViewInteraction textView6 = onView(
+                allOf(withId(R.id.lbl_display), withText("√()+-*/"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.root_activity_calculator),
                                         0),
                                 1),
                         isDisplayed()));
-        textView.check(matches(withText("45.0")));
-
-        ViewInteraction appCompatButton16 = onView(
-                allOf(withId(R.id.btn_clear), withText("C"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                23),
-                        isDisplayed()));
-        appCompatButton16.perform(click());
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.lbl_display),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.root_activity_calculator),
-                                        0),
-                                1),
-                        isDisplayed()));
-        textView2.check(matches(withText("")));
+        textView6.check(matches(withText("√()+-*/")));
 
     }
 

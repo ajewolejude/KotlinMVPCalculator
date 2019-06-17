@@ -27,13 +27,22 @@ import static org.hamcrest.core.AllOf.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class CalculatorActivityTest {
+public class CalculatorActivitySimpleExpressionTest {
 
     @Rule
     public ActivityTestRule<CalculatorActivity> mActivityTestRule = new ActivityTestRule<>(CalculatorActivity.class);
 
+    /**?
+     * This UI Tests : 1+2
+     * 1. Onclick of 1
+     * 2. Onclick of *
+     * 3. Check if Result display is 3.0
+     *
+     *
+     *
+     */
     @Test
-    public void calculatorActivityTest() {
+    public void calculatorActivityEvaluateTest() {
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.btn_number_one), withText("1"),
                         childAtPosition(
