@@ -10,9 +10,6 @@ import io.reactivex.schedulers.TestScheduler
 import com.thegreychain.kotlincalculator.util.scheduler.BaseSchedulerProvider
 
 
-/**
- * Created by R_KAY on 12/20/2017.
- */
 class EvaluateExpression(private val calculator: ICalculator,
                          private val validator: IValidator,
                          private val scheduler: BaseSchedulerProvider) : BaseUseCase<Expression> {

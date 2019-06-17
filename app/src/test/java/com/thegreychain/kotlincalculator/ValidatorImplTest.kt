@@ -5,9 +5,7 @@ import junit.framework.Assert.assertFalse
 import junit.framework.Assert.assertTrue
 import org.junit.Test
 
-/**
- * Created by R_KAY on 1/20/2018.
- */
+
 class ValidatorImplTest {
 
     private val validator = ValidatorImpl

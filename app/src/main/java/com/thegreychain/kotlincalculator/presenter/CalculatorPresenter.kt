@@ -10,9 +10,7 @@ import io.reactivex.schedulers.TestScheduler
 import io.reactivex.subscribers.DisposableSubscriber
 
 
-/**
- * Created by R_KAY on 12/20/2017.
- */class CalculatorPresenter(private var view: IViewContract.View,
+ class CalculatorPresenter(private var view: IViewContract.View,
                              private var viewModel: IViewContract.ViewModel,
                              private val scheduler: BaseSchedulerProvider,
                              private val eval: EvaluateExpression) : IViewContract.Presenter {

@@ -16,8 +16,6 @@ import org.mockito.MockitoAnnotations
 /**
  * Test behaviour of Presenter.
  *
- * Props to Antonio Leiva for explaining how to add org.mockito.plugins.MockMaker file to
- * test/resources/mockito-extensions to enable Mocking of Kotlin final classes.
  *
  * https://antonioleiva.com/mockito-2-kotlin/
  *

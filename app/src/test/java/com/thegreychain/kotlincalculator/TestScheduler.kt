@@ -5,7 +5,7 @@ import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 
 /**
- * Allows testing of RxJava impl on JVM (we can't use an AndroidScheduler on the JVM).
+ * testing of RxJava impl on JVM.
  *
  */
 class TestScheduler: BaseSchedulerProvider {
