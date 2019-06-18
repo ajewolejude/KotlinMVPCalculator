@@ -13,7 +13,6 @@ object ValidatorImpl : IValidator {
         if (hasConcurrentOperators(expression)) return false
         if (hasConcurrentDecimals(expression)) return false
         if (hasCloseBracketFollowingRoot(expression)) return false
-        if (hasConcurrentRootOrBracket(expression)) return false
 
 
         return true
@@ -105,18 +104,6 @@ object ValidatorImpl : IValidator {
     }
 
 
-    private fun hasConcurrentRootOrBracket(expression: String): Boolean {
-        expression.indices
-                .forEach {
-                    if (it < expression.lastIndex) {
-                        if (expression[it]==expression[it + 1]) {
-                            return true
-                        }
-                    }
-                }
-
-        return false
-    }
 
     private fun hasCloseBracketFollowingRoot(expression: String):Boolean {
         when {
