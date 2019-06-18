@@ -2,6 +2,8 @@ package com.thegreychain.kotlincalculator.data
 
 import com.thegreychain.kotlincalculator.domain.repository.IValidator
 
+
+//Validator Impl
 object ValidatorImpl : IValidator {
     override fun validateExpression(expression: String): Boolean {
 
@@ -93,15 +95,7 @@ object ValidatorImpl : IValidator {
         }
     }
 
-    private fun isBracketAndRoot(char: Char): Boolean {
-        return when {
-        //not sure why I had to toString() but char.equals("+") was not working as expected
-            char.toString() == "√" -> true
-            char.toString() == "(" -> true
-            char.toString() == ")" -> true
-            else -> false
-        }
-    }
+
 
 
 
