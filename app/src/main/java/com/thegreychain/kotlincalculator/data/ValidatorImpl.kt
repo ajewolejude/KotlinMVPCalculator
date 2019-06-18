@@ -3,7 +3,7 @@ package com.thegreychain.kotlincalculator.data
 import com.thegreychain.kotlincalculator.domain.repository.IValidator
 
 
-//Validator Impl
+//Validator Imp
 object ValidatorImpl : IValidator {
     override fun validateExpression(expression: String): Boolean {
 
