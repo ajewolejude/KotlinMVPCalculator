@@ -6,6 +6,10 @@ which includes a ViewModel object.
 ## APP Link
 https://drive.google.com/open?id=1BA9sisGXc4RCLuPn6a5rM2RygbQbrUqP
 
+## ScreenShots
+<img src="Screenshot_20191228-123900_iCalculator.jpg" width="300" height="600"/>
+<img src="Screenshot_20191228-123922_iCalculator.jpg" width="300" height="600"/>
+
 ## Implementation:
 - Unit tests using JUnit
 - Regex
